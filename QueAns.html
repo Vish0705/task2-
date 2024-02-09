@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Application</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .quiz-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .question {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .option {
+      padding: 10px;
+      text-align: center;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .option:hover {
+      background-color: #2980b9;
+    }
+
+    .feedback {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <div class="question" id="question1">1. What is the capital of France?</div>
+    <div class="options" id="options1">
+      <button class="option" onclick="checkAnswer(1, 'Paris')">Paris</button>
+      <button class="option" onclick="checkAnswer(1, 'Berlin')">Berlin</button>
+      <button class="option" onclick="checkAnswer(1, 'Madrid')">Madrid</button>
+      <button class="option" onclick="checkAnswer(1, 'Rome')">Rome</button>
+    </div>
+    <div class="feedback" id="feedback1"></div>
+
+    <div class="question" id="question2">2. What is the largest mammal?</div>
+    <div class="options" id="options2">
+      <button class="option" onclick="checkAnswer(2, 'Elephant')">Elephant</button>
+      <button class="option" onclick="checkAnswer(2, 'Blue Whale')">Blue Whale</button>
+      <button class="option" onclick="checkAnswer(2, 'Giraffe')">Giraffe</button>
+      <button class="option" onclick="checkAnswer(2, 'Lion')">Lion</button>
+    </div>
+    <div class="feedback" id="feedback2"></div>
+  </div>
+
+  <script>
+    function checkAnswer(questionNumber, selectedOption) {
+      var feedbackElement = document.getElementById('feedback' + questionNumber);
+      var correctAnswer;
+
+      switch (questionNumber) {
+        case 1:
+          correctAnswer = 'Paris';
+          break;
+        case 2:
+          correctAnswer = 'Blue Whale';
+          break;
+        // Add more cases for additional questions...
+
+        default:
+          break;
+      }
+
+      if (selectedOption === correctAnswer) {
+        feedbackElement.textContent = 'Correct! Well done.';
+        feedbackElement.style.color = '#2ecc71';
+      } else {
+        feedbackElement.textContent = 'Incorrect. The correct answer is ' + correctAnswer + '.';
+        feedbackElement.style.color = '#e74c3c';
+      }
+    }
+  </script>
+
+</body>
+</html>
